@@ -1,0 +1,195 @@
+# =====================================================
+#  ⚠️  DEPRECATED — 此文件已废弃，请勿在新代码中引用
+#
+#  新的三层知识库体系:
+#    Layer 1: levels/backend.yaml, levels/frontend.yaml
+#    Layer 2: companies/alibaba.yaml, companies/tencent.yaml, ...
+#    Layer 3: bu_knowledge/bytedance_douyin_backend.yaml, ...
+#
+#  PersonaBuilder 已不再读取此文件。
+#  保留仅供参考，将在后续版本中删除。
+# =====================================================
+
+companies:
+  # ────────── 字节跳动 ──────────
+  字节跳动:
+    aliases: [ByteDance, 字节, 抖音]
+    culture:
+      values: [始终创业, 追求极致, 坦诚清晰, 多元兼容, 共同成长]
+      style: >-
+        高度扁平化组织，鼓励主动沟通、快速迭代。强调数据驱动决策，
+        乐于接受"第一性原理"思考。面试中偏好开放式讨论和场景题。
+      interview_style: >-
+        面试节奏快，注重候选人思维过程而非标准答案。
+        常问系统设计、复杂度分析、算法手写。
+        业务面会追问产品 sense 和 ROI 思维。
+    tech_stack:
+      backend: [Go, Python, Java, C++, Rust]
+      frontend: [React, Vue, TypeScript, Lynx]
+      infra: [Kubernetes, ClickHouse, RocksDB, Flink, Kafka, ByteHTTP]
+      ai_ml: [PyTorch, TensorFlow, Ray, Volcano Engine]
+    business_units:
+      - name: 抖音
+        focus: 短视频, 直播, 电商
+        keywords: [推荐系统, 广告, 内容安全, 直播互动]
+      - name: TikTok
+        focus: Global short-video platform
+        keywords: [internationalization, content moderation, CDN]
+      - name: 飞书
+        focus: 企业协作办公
+        keywords: [即时通讯, 文档协同, 视频会议, low-code]
+      - name: 火山引擎
+        focus: 云服务 & AI 平台
+        keywords: [云原生, MLOps, 大模型, 向量数据库]
+      - name: 游戏
+        focus: 游戏研发与发行
+        keywords: [UE5, Unity, 游戏服务器, 反作弊]
+    position_types:
+      - type: 后端开发
+        key_topics: [系统设计, 分布式, 高并发, 数据库, Go/Java]
+      - type: 前端开发
+        key_topics: [React/Vue, 性能优化, 跨端, 工程化]
+      - type: 算法工程师
+        key_topics: [推荐系统, NLP, CV, 模型优化, A/B测试]
+      - type: 产品经理
+        key_topics: [需求分析, 数据分析, 用户增长, 竞品分析]
+
+  # ────────── 腾讯 ──────────
+  腾讯:
+    aliases: [Tencent, 鹅厂]
+    culture:
+      values: [正直, 进取, 协作, 创造]
+      style: >-
+        赛马机制，内部竞争与创新并存。重视技术深度和工程能力。
+        面试相对正式，考察基础扎实程度和项目经验深度。
+      interview_style: >-
+        面试官风格因 BG 差异较大。后端偏重 C++ 基础和操作系统，
+        前端重 JS 基础。业务面考察项目复盘和团队协作经验。
+    tech_stack:
+      backend: [C++, Go, Java, Node.js, Tars]
+      frontend: [React, Vue, 小程序, Hippy]
+      infra: [TSF, TKE(K8s), TBase, Pulsar, TDMQ]
+      ai_ml: [Angel, PaddlePaddle, NCNN, MNN]
+    business_units:
+      - name: 微信事业群(WXG)
+        focus: 微信生态
+        keywords: [小程序, 支付, 搜一搜, 视频号]
+      - name: 互动娱乐(IEG)
+        focus: 游戏
+        keywords: [UE, 游戏引擎, 服务器, 反作弊]
+      - name: 云与智慧产业(CSIG)
+        focus: 云服务 & ToB
+        keywords: [腾讯云, SaaS, 企业微信, 安全]
+      - name: 平台与内容(PCG)
+        focus: 内容平台
+        keywords: [QQ, 腾讯新闻, 腾讯视频, 推荐]
+    position_types:
+      - type: 后端开发
+        key_topics: [C++/Go, 操作系统, 网络, 多线程, 分布式]
+      - type: 前端开发
+        key_topics: [JS基础, 浏览器原理, 小程序, 性能优化]
+      - type: 游戏开发
+        key_topics: [图形学, 引擎, 网络同步, 物理模拟]
+
+  # ────────── 阿里巴巴 ──────────
+  阿里巴巴:
+    aliases: [Alibaba, 阿里, 蚂蚁]
+    culture:
+      values: [客户第一, 团队合作, 拥抱变化, 诚信, 激情, 敬业]
+      style: >-
+        使命驱动型文化，重视业务理解力和全局思维。
+        面试喜欢追问"为什么这么做"和"还有更好的方案吗"。
+      interview_style: >-
+        面试轮次较多（3-5 轮技术 + HR），Cross 面常见。
+        尤其重视 Java 生态和大规模系统设计。
+        P7+ 看重技术影响力和方案决策能力。
+    tech_stack:
+      backend: [Java, Go, Node.js, Dubbo, Spring Cloud, SOFA]
+      frontend: [React, ICE, Rax, AntDesign, 小程序]
+      infra: [OceanBase, MaxCompute, Lindorm, RocketMQ, K8s]
+      ai_ml: [PAI, Alink, EasyRec, ModelScope]
+    business_units:
+      - name: 淘天集团
+        focus: 电商
+        keywords: [交易, 搜索推荐, 营销, 供应链]
+      - name: 阿里云
+        focus: 云计算
+        keywords: [ECS, OSS, 函数计算, 大数据]
+      - name: 蚂蚁集团
+        focus: 金融科技
+        keywords: [支付宝, 风控, 区块链, 图计算]
+      - name: 本地生活
+        focus: O2O 服务
+        keywords: [饿了么, 高德, 即时配送, LBS]
+    position_types:
+      - type: Java开发
+        key_topics: [JVM, Spring/Dubbo, 分布式事务, 消息队列, 高可用]
+      - type: 前端开发
+        key_topics: [React, Node BFF, 微前端, Serverless]
+      - type: 数据工程师
+        key_topics: [Spark, Flink, 数仓建模, 实时数据]
+
+  # ────────── 美团 ──────────
+  美团:
+    aliases: [Meituan, 美团点评]
+    culture:
+      values: [以客户为中心, 正直诚信, 合作共赢, 追求卓越]
+      style: >-
+        注重执行力和务实精神，"长期有耐心"。
+        面试注重算法基础、系统设计和业务理解。
+      interview_style: >-
+        每轮必考算法手写。系统设计偏实际业务场景（外卖配送、
+        优惠券系统等）。喜欢问"遇到的最大技术挑战"。
+    tech_stack:
+      backend: [Java, Go, Python, Thrift, MTDDL]
+      frontend: [React, Vue, Flutter, Mach]
+      infra: [MySQL, Redis, Elasticsearch, Kafka, Kubernetes]
+      ai_ml: [美团 AI 平台, PyTorch, NLP/CV/RL for配送]
+    business_units:
+      - name: 到家事业群
+        focus: 外卖配送
+        keywords: [实时调度, 路径规划, ETA预估]
+      - name: 到店事业群
+        focus: 到店餐饮 & 生活服务
+        keywords: [搜索排序, 评价, 商户运营]
+      - name: 美团优选
+        focus: 社区团购
+        keywords: [供应链, 仓配, 选品]
+    position_types:
+      - type: 后端开发
+        key_topics: [Java, Spring, 分布式, 高并发, 算法]
+      - type: 算法工程师
+        key_topics: [调度优化, 推荐, NLP, 搜索排序]
+
+  # ────────── 华为 ──────────
+  华为:
+    aliases: [Huawei, 菊厂]
+    culture:
+      values: [以客户为中心, 以奋斗者为本, 长期艰苦奋斗, 坚持自我批判]
+      style: >-
+        狼性文化，注重执行力和团队战斗力。面试严谨，
+        机考+技术面+综合面+主管面多轮制。
+      interview_style: >-
+        笔试/机考权重大，偏好 ACM 风格编程题。
+        技术面重基础（OS、网络、编译原理）。
+        综合面关注抗压能力和团队协作。
+    tech_stack:
+      backend: [C, C++, Java, Go, Python]
+      frontend: [ArkTS, HarmonyOS, Vue]
+      infra: [GaussDB, FusionInsight, Kunpeng, Ascend]
+      ai_ml: [MindSpore, CANN, ModelArts]
+    business_units:
+      - name: 终端 BG
+        focus: 消费电子 & HarmonyOS
+        keywords: [HarmonyOS, 鸿蒙, 手机, IoT]
+      - name: 云计算 BG
+        focus: 华为云
+        keywords: [公有云, 混合云, CloudNative]
+      - name: ICT 基础设施
+        focus: 通信设备 & 网络
+        keywords: [5G, 路由器, 光网络]
+    position_types:
+      - type: 软件开发
+        key_topics: [C/C++, 操作系统, 网络协议, 编译原理]
+      - type: 算法专家
+        key_topics: [通信算法, AI, 数学建模]

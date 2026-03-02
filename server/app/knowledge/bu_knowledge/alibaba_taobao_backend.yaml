@@ -1,0 +1,85 @@
+# =====================================================
+#  Layer 3: 阿里巴巴 · 淘宝 · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 阿里巴巴
+company_key: alibaba
+bu: 淘宝
+bu_key: taobao
+position_type: backend
+
+# ── BU简介 ────────────────────────────────────────────────
+context_intro: >
+  淘宝后端核心挑战：亿级用户的搜索推荐系统实时性，双11大促亿级QPS保障，
+  电商交易链路的高可用和数据一致性。主技术栈Java，大数据链路Flink+Hologres，
+  AI平台PAI。团队规模大，中台体系成熟，业务复杂度高。
+
+# ── 技术栈 ────────────────────────────────────────────────
+tech_stack:
+  primary_languages: [Java, Python]
+  frameworks: [Spring Boot, HSF, Dubbo]
+  data_pipeline: [Flink, Hologres, MaxCompute, DataX]
+  storage: [MySQL, OceanBase, Redis, Tair, OSS]
+  infra: [Kubernetes, EDAS, MSE, ARMS]
+  ml_platform: [PAI, EAS, DLC]
+
+# ── 核心业务域 ────────────────────────────────────────────
+core_domains:
+  - name: 搜索推荐
+    architecture: "多路召回 → 粗排(DSSM) → 精排(深度模型) → 混排(业务规则)"
+    keywords: [召回, 特征工程, A/B实验, 冷启动, 多目标优化, 实时特征]
+    high_frequency_questions:
+      - "搜索和推荐系统的区别以及架构差异"
+      - "如何解决推荐系统的冷启动问题"
+      - "大规模特征工程的实践经验"
+
+  - name: 交易系统
+    architecture: "下单 → 支付 → 履约 → 售后，分布式事务保障"
+    keywords: [分布式事务, TCC, 库存扣减, 订单状态机, 幂等性]
+    high_frequency_questions:
+      - "订单系统如何保证数据一致性"
+      - "库存超卖问题如何解决"
+      - "大促场景下交易链路的降级策略"
+
+  - name: 中台服务
+    architecture: "业务中台 + 数据中台 + 技术中台"
+    keywords: [中台, 服务化, API网关, 限流熔断, 配置中心]
+    high_frequency_questions:
+      - "中台架构的优劣势"
+      - "如何设计一个通用的服务治理框架"
+
+# ── 按目标级别的考察侧重 ────────────────────────────────
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "Java基础、Spring框架、基本SQL优化"
+    sample_topics: ["HashMap原理", "Spring IoC/AOP", "MySQL索引"]
+    depth: "知其然即可"
+  T3_T4:
+    focus: "系统设计能力、中间件原理、性能优化实战"
+    sample_topics: ["分布式事务方案对比", "大促保障方案", "缓存架构"]
+    depth: "知其所以然，能给出量化数据"
+  T5_T6:
+    focus: "技术战略、中台演进、AI与电商融合"
+    sample_topics: ["中台架构的下一步", "大模型在电商中的应用"]
+    depth: "有独到见解和实战验证"
+
+# ── 当前团队痛点 ──────────────────────────────────────────
+current_pain_points:
+  - "中台架构在某些场景下变成效率瓶颈"
+  - "大模型落地成本控制"
+  - "全球化（Lazada/Trendyol）的技术复用"
+
+# ── 团队文化特点 ──────────────────────────────────────────
+team_specific_culture:
+  - "双11大促驱动的工程文化"
+  - "数据驱动决策，强调指标和结果"
+  - "中台体系成熟但灵活度受限"
+
+# ── 通用面试话题 ──────────────────────────────────────────
+common_interview_topics:
+  - "Java并发编程"
+  - "分布式系统设计"
+  - "数据库优化"
+  - "缓存策略"
+  - "消息队列"
+  - "系统监控"

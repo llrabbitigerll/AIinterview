@@ -1,0 +1,73 @@
+# =====================================================
+#  Layer 2: 美团 — 公司文化补丁
+# =====================================================
+
+company_name: 美团
+company_key: meituan
+
+# ── 公司整体文化 ──────────────────────────────────────────
+culture_style: "务实、地推文化、业务驱动、强调ROI思维"
+values: [以客户为中心, 正直诚信, 合作共赢, 追求卓越]
+
+# ── 面试通用特点 ────────────────────────────────────────
+interview_common_traits:
+  - "非常务实，关注问题解决而非理论"
+  - "面试常和本地生活场景绑定（配送、商家、支付）"
+  - "注重候选人的系统设计和优化能力"
+  - "高级别面试看重业务理解和ROI思维"
+  - "面试氛围比较轻松"
+
+# ── 各级别的文化覆盖补丁 ────────────────────────────────
+level_patches:
+  T1:
+    personality_override: "友好、务实，重视动手能力"
+    extra_concerns: ["编程基础", "简单系统设计"]
+    coding_requirement: "中等，Easy-Medium"
+    interview_style_note: "会用外卖/到店等场景出题"
+
+  T2:
+    extra_concerns: ["对本地生活业务的基本理解", "模块设计能力"]
+    interview_style_note: "用配送调度、商家运营等场景考察"
+
+  T3:
+    extra_concerns: ["系统设计实战", "高并发处理经验"]
+    interview_style_note: "配送履约、商家端系统是高频设计题"
+
+  T4:
+    extra_concerns: ["业务系统全局观", "技术优化的ROI"]
+    evaluation_weight_override:
+      技术深度: 25%
+      系统思维: 30%
+      业务理解: 25%
+      ROI思维: 20%
+
+  T5:
+    personality_override: "理性、简洁、注重技术的商业价值"
+    extra_concerns: ["技术规划与业务对齐", "本地生活技术挑战"]
+
+  T6:
+    extra_concerns: ["平台级技术规划", "LBS和配送技术的深度"]
+
+  T7:
+    dual_agent_b_style: "务实追问，关注技术的商业回报"
+
+  T8:
+    dual_agent_b_style: "战略讨论，本地生活技术未来"
+
+# ── 公司已知高频考题方向 ──────────────────────────────────
+known_hot_topics:
+  backend: ["配送调度算法", "LBS服务设计", "高并发订单处理", "支付系统", "分布式缓存"]
+  frontend: ["移动端性能优化", "小程序框架", "端智能"]
+
+# ── 面试流程元信息 ────────────────────────────────────────
+interview_process_meta:
+  typical_rounds: 4       # 技术面3轮 + HR面
+  on_site_or_remote: "混合"
+  coding_platform: "牛客"
+  decision_speed: "中等，2-3周"
+
+# ── 薪酬谈判文化 ────────────────────────────────────────
+offer_culture:
+  negotiation_space: "中等"
+  stock_proportion: "股票占比15-30%"
+  notes: "美团港股上市，RSU流动性好，注意社保公积金基数"

@@ -1,0 +1,46 @@
+{
+  "name": "ai-interview-devtools",
+  "displayName": "AI Interview DevTools",
+  "description": "Developer monitoring panel for AI Interview system — real-time internal state viewer",
+  "version": "1.0.0",
+  "publisher": "devtools-local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiInterviewDevTools.open",
+        "title": "AI Interview: Open DevTools Panel"
+      },
+      {
+        "command": "aiInterviewDevTools.clear",
+        "title": "AI Interview: Clear DevTools Events"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        { "command": "aiInterviewDevTools.open" },
+        { "command": "aiInterviewDevTools.clear" }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && npm run build:webview",
+    "build:webview": "cd webview && npm run build",
+    "watch": "tsc -p tsconfig.json --watch",
+    "install:all": "npm install && cd webview && npm install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@types/ws": "^8.5.10",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}

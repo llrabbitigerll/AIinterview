@@ -1,0 +1,73 @@
+# =====================================================
+#  Layer 2: 京东 — 公司文化补丁
+# =====================================================
+
+company_name: 京东
+company_key: jd
+
+# ── 公司整体文化 ──────────────────────────────────────────
+culture_style: "务实、供应链驱动、重执行力、自营电商基因"
+values: [客户为先, 创新, 正道成功, 合作]
+
+# ── 面试通用特点 ────────────────────────────────────────
+interview_common_traits:
+  - "务实导向，重视落地能力而非空谈"
+  - "面试问题常与电商和供应链场景绑定"
+  - "关注候选人对大规模系统的实战经验"
+  - "技术和业务并重，尤其高级别看重业务理解"
+  - "面试氛围相对平等，不刁难"
+
+# ── 各级别的文化覆盖补丁 ────────────────────────────────
+level_patches:
+  T1:
+    personality_override: "务实、友好，注重基本功"
+    extra_concerns: ["Java/Spring基础", "数据库基础"]
+    coding_requirement: "中等，Easy-Medium"
+    interview_style_note: "偏好Java后端相关问题"
+
+  T2:
+    extra_concerns: ["独立模块开发能力", "对电商系统的基本理解"]
+    interview_style_note: "会用电商场景出题（库存、订单）"
+
+  T3:
+    extra_concerns: ["系统设计的实战经验", "大促保障经验"]
+    interview_style_note: "大促场景（双11保障）是高频考点"
+
+  T4:
+    extra_concerns: ["供应链技术理解", "跨系统集成能力"]
+    evaluation_weight_override:
+      技术深度: 25%
+      系统思维: 30%
+      业务理解: 25%
+      执行力: 20%
+
+  T5:
+    personality_override: "理性、务实、注重落地效果"
+    extra_concerns: ["供应链数字化", "AI在电商中的应用"]
+
+  T6:
+    extra_concerns: ["零售技术战略", "供应链+AI融合"]
+
+  T7:
+    dual_agent_b_style: "务实追问式，关注落地可行性"
+
+  T8:
+    dual_agent_b_style: "战略讨论，零售科技未来"
+
+# ── 公司已知高频考题方向 ──────────────────────────────────
+known_hot_topics:
+  backend: ["库存系统设计", "订单系统", "分布式锁", "大促限流", "供应链优化"]
+  frontend: ["移动端性能", "小程序开发", "中后台系统"]
+
+# ── 面试流程元信息 ────────────────────────────────────────
+interview_process_meta:
+  typical_rounds: 3       # 技术面2-3轮 + HR面
+  on_site_or_remote: "混合"
+  coding_platform: "牛客"
+  decision_speed: "中等，2-3周"
+
+# ── 薪酬谈判文化 ────────────────────────────────────────
+offer_culture:
+  negotiation_space: "中等"
+  stock_proportion: "股票占比15-30%"
+  notes: "京东已在港股上市，RSU流动性较好"

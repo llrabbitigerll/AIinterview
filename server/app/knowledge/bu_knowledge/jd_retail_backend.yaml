@@ -1,0 +1,75 @@
+# =====================================================
+#  Layer 3: 京东 · 零售 · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 京东
+company_key: jd
+bu: 京东零售
+bu_key: retail
+position_type: backend
+
+context_intro: >
+  京东零售后端核心挑战：大促期间亿级订单处理，自营+平台混合模式的库存管理，
+  供应链全链路数字化。主技术栈Java，中间件体系完善。
+
+tech_stack:
+  primary_languages: [Java, Go, Python]
+  frameworks: [Spring Boot, JSF(京东服务框架), Dubbo]
+  data_pipeline: [Flink, Kafka, ClickHouse, HBase]
+  storage: [MySQL, Redis, Elasticsearch, JimDB]
+  infra: [Kubernetes, JDOS, JMQ]
+
+core_domains:
+  - name: 交易系统
+    architecture: "商品 → 购物车 → 下单 → 支付 → 履约"
+    keywords: [订单系统, 库存, 促销规则, 分布式事务, 大促保障]
+    high_frequency_questions:
+      - "双11订单系统的限流降级方案"
+      - "库存扣减的一致性保障"
+      - "购物车系统设计"
+
+  - name: 搜索推荐
+    architecture: "搜索引擎 → 排序 → 推荐 → 个性化"
+    keywords: [ES, 搜索排序, 推荐算法, 个性化]
+    high_frequency_questions:
+      - "电商搜索和通用搜索的区别"
+      - "商品推荐系统的架构"
+
+  - name: 供应链系统
+    architecture: "采购 → 入库 → 仓储 → 配送 → 妥投"
+    keywords: [WMS, TMS, 库存调度, 路径优化]
+    high_frequency_questions:
+      - "供应链系统的核心架构"
+      - "配送路径优化算法"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "Java基础、Spring框架、SQL优化"
+    sample_topics: ["HashMap原理", "Spring AOP", "慢查询优化"]
+    depth: "基础扎实"
+  T3_T4:
+    focus: "电商系统设计、大促保障、分布式方案"
+    sample_topics: ["订单系统设计", "库存一致性", "限流熔断"]
+    depth: "有大规模实战经验"
+  T5_T6:
+    focus: "零售技术战略、供应链数字化、AI应用"
+    sample_topics: ["供应链数字化方向", "AI在电商中的价值"]
+    depth: "有战略视角"
+
+current_pain_points:
+  - "自营和平台的技术架构统一"
+  - "供应链预测准确度"
+  - "大模型在客服和选品中的应用"
+
+team_specific_culture:
+  - "大促驱动的工程文化"
+  - "务实，重视落地和效果"
+  - "供应链基因强"
+
+common_interview_topics:
+  - "Java高级特性"
+  - "电商系统设计"
+  - "分布式事务"
+  - "缓存策略"
+  - "消息队列"
+  - "数据库优化"

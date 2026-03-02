@@ -1,0 +1,1129 @@
+/* ═══════════════════════════════════════════════════════════
+   Global styles for AI Interview App
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --border: rgba(0, 0, 0, 0.06);
+  --agent-b-color: #2563eb;
+  --agent-c-color: #7c3aed;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* antd v5 AntApp component renders a wrapper div — must also fill viewport */
+.ant-app {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ── Interview Layout ──────────────────────────────────── */
+/*
+ * Three-column layout:
+ *   Left  (5fr)  : Immersive interview scene image + input
+ *   Middle (2fr) : Compact conversation log (reference only)
+ *   Right  (3fr) : Code editor (shown when active)
+ */
+.interview-layout {
+  display: grid;
+  grid-template-columns: 5fr 2fr 0px;
+  grid-template-rows: 100vh;
+  height: 100vh;
+  gap: 0;
+  background-color: #eef0f8;
+  transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interview-layout-with-code {
+  grid-template-columns: 5fr 2fr 3fr;
+}
+
+/* ── Left Panel — Immersive Scene + Input ─────────────── */
+.left-panel {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1f2e;
+  border-right: 1px solid var(--border);
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Floating session status badge (overlays on image) */
+.lp-header {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.session-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.session-dot--live {
+  background: #22c55e;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.session-dot--paused {
+  background: #f59e0b;
+}
+
+.session-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* Scene image area — fills remaining vertical space */
+.avatar-scene {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* The scene picture itself */
+.scene-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Placeholder shown when no real image is loaded */
+.scene-placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(160deg, #1e2d4a 0%, #2a3f62 40%, #1a2b45 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG / illustrated fallback scene inside placeholder */
+.scene-illustration {
+  width: 80%;
+  max-width: 480px;
+  opacity: 0.92;
+}
+
+/* Bottom gradient overlay on scene image (nameplate area) */
+.scene-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 28px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(15, 20, 35, 0.92) 0%,
+    rgba(15, 20, 35, 0.55) 55%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scene-overlay .agent-nameplate {
+  align-items: flex-start;
+}
+
+.scene-overlay .agent-name {
+  color: #ffffff;
+  font-size: 22px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.scene-overlay .agent-state-hint {
+  color: rgba(255,255,255,0.72);
+}
+
+.scene-overlay .hint-dot {
+  background: rgba(255,255,255,0.4);
+}
+
+.scene-overlay .hint-dot--active {
+  background: #60a5fa;
+}
+
+/* ── Interviewer Dialog Box (RPG speech bubble) ── */
+.interviewer-dialog {
+  position: absolute;
+  bottom: 148px;            /* sits above scene-overlay nameplate area */
+  left: 5%;
+  width: 90%;
+  z-index: 6;
+  padding: 12px 14px 14px;
+  border-radius: 12px;
+  background: rgba(8, 14, 30, 0.72);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid rgba(100, 150, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(37, 99, 235, 0.06);
+  cursor: default;
+}
+
+/* Four corner decorations */
+.interviewer-dialog__corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(96, 165, 250, 0.55);
+  border-style: solid;
+}
+.interviewer-dialog__corner--tl {
+  top: -1px; left: -1px;
+  border-width: 2px 0 0 2px;
+  border-radius: 3px 0 0 0;
+}
+.interviewer-dialog__corner--tr {
+  top: -1px; right: -1px;
+  border-width: 2px 2px 0 0;
+  border-radius: 0 3px 0 0;
+}
+.interviewer-dialog__corner--bl {
+  bottom: -1px; left: -1px;
+  border-width: 0 0 2px 2px;
+  border-radius: 0 0 0 3px;
+}
+.interviewer-dialog__corner--br {
+  bottom: -1px; right: -1px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 3px 0;
+}
+
+/* Header row */
+.interviewer-dialog__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.interviewer-dialog__icon {
+  font-size: 8px;
+  color: #60a5fa;
+  line-height: 1;
+}
+.interviewer-dialog__name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #60a5fa;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+/* Animated typing dots shown while streaming */
+.interviewer-dialog__typing {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: auto;
+}
+.interviewer-dialog__typing span {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(96, 165, 250, 0.7);
+  animation: dialog-dot-bounce 1.1s ease-in-out infinite;
+}
+.interviewer-dialog__typing span:nth-child(2) { animation-delay: 0.18s; }
+.interviewer-dialog__typing span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes dialog-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40%            { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Body — the actual question text */
+.interviewer-dialog__body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(230, 235, 248, 0.92);
+  max-height: 110px;
+  overflow-y: auto;
+  word-break: break-word;
+  padding-right: 2px;
+}
+.interviewer-dialog__body::-webkit-scrollbar {
+  width: 3px;
+}
+.interviewer-dialog__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.interviewer-dialog__body::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.3);
+  border-radius: 2px;
+}
+
+/* Waveform inside scene overlay */
+.scene-waveform {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Glow ring wrapping avatar */
+.avatar-ring {
+  padding: 6px;
+  border-radius: 50%;
+  background: transparent;
+  transition: box-shadow 0.4s ease;
+}
+.avatar-ring--active {
+  animation: ringGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes ringGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(37, 99, 235, 0.12),
+      0 0 0 10px rgba(37, 99, 235, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(37, 99, 235, 0.20),
+      0 0 0 18px rgba(37, 99, 235, 0.07);
+  }
+}
+
+/* Agent name + role */
+.agent-nameplate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.agent-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+/* Speaking/waiting hint */
+.agent-state-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.hint-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d1d5db;
+  flex-shrink: 0;
+}
+.hint-dot--active {
+  background: var(--accent);
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+/* Waveform row (inside scene overlay) */
+.waveform-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Mic status dots */
+.mic-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-recording {
+  background: #ef4444;
+  animation: pulse-dot 1s ease-in-out infinite;
+}
+.dot-ready  { background: #22c55e; }
+.dot-off    { background: #9ca3af; }
+
+.mic-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Session controls — row inside input panel */
+.lp-controls {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  outline: none;
+  white-space: nowrap;
+}
+.ctrl-btn--ghost {
+  background: #f3f4f6;
+  color: var(--text-primary);
+}
+.ctrl-btn--ghost:hover { background: #e5e7eb; }
+
+.ctrl-btn--primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+.ctrl-btn--primary:hover { background: var(--accent-hover); }
+
+.ctrl-btn--danger {
+  background: #fff0f0;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.ctrl-btn--danger:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+/* ── Middle Panel — Compact Chat Log ─────────────────── */
+.middle-panel {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  background: #f6f8fc;
+  border-right: 1px solid var(--border);
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Chat header bar */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 48px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  background: #f6f8fc;
+}
+.chat-header__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-header__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.chat-header__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Textarea wrapper — enables positioning the expand button */
+.textarea-wrapper {
+  position: relative;
+}
+
+/* Expand / collapse button — appears in top-right corner of textarea */
+.textarea-expand-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 3;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 12px;
+  padding: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.textarea-expand-btn:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--accent);
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+.textarea-expand-btn:active {
+  transform: scale(0.93);
+}
+
+/* Input panel — pinned to bottom of LEFT panel */
+.input-panel {
+  flex-shrink: 0;
+  padding: 14px 20px 16px;
+  background: #ffffff;
+  border-top: 1.5px solid rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Transcription status strip */
+.transcription-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 24px;
+}
+.transcription-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.transcription-live {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: rgba(37, 99, 235, 0.05);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+.transcription-text {
+  flex: 1;
+}
+.transcription-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Input action row */
+.input-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-actions__left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Right Panel — Code Editor ─────────────────────────── */
+.right-panel {
+  grid-column: 3;
+  height: 100%;
+  background: var(--bg-secondary);
+  overflow: hidden;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ── Chat Messages ─────────────────────────────────────── */
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-bubble {
+  max-width: 90%;
+  padding: 9px 12px;
+  border-radius: 12px;
+  line-height: 1.6;
+  font-size: 13px;
+  word-break: break-word;
+  animation: fadeInUp 0.25s ease;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.message-header-user {
+  justify-content: flex-end;
+}
+
+.message-sender-name {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.message-content {
+  line-height: 1.7;
+}
+
+.message-bubble.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #3b82f6 0%, var(--accent) 100%);
+  color: white;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.22);
+}
+
+.message-bubble.user .message-sender-name {
+  color: rgba(255,255,255,0.82);
+}
+
+.message-bubble.agent_b {
+  align-self: flex-start;
+  background: #f8f9ff;
+  border-left: 3px solid var(--agent-b-color);
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.message-bubble.agent_c {
+  align-self: flex-start;
+  background: #faf8ff;
+  border-left: 3px solid var(--agent-c-color);
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.message-bubble.system {
+  align-self: center;
+  max-width: 90%;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 6px 16px;
+  border: 1px dashed var(--border);
+  border-radius: 20px;
+}
+
+.system-message-text {
+  text-align: center;
+}
+
+.system-qa-notice {
+  color: var(--warning);
+  font-weight: 500;
+}
+
+.message-sender {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+/* ── Streaming Dots Animation ──────────────────────────── */
+.streaming-dots {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: 4px;
+  margin-top: 8px;
+}
+
+.streaming-dots .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dotBounce 1.4s infinite ease-in-out;
+}
+
+.streaming-dots .dot:nth-child(1) { animation-delay: 0s; }
+.streaming-dots .dot:nth-child(2) { animation-delay: 0.2s; }
+.streaming-dots .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* ── Audio Waveform ────────────────────────────────────── */
+.waveform-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+}
+
+.waveform-bar {
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: height 0.1s ease;
+}
+
+/* ── Animations ────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes avatarGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1), 0 0 0 12px rgba(37, 99, 235, 0.05), var(--shadow-md);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0.18), 0 0 0 22px rgba(37, 99, 235, 0.08), var(--shadow-md);
+  }
+}
+
+.avatar-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+}
+
+.avatar-circle.avatar-speaking {
+  border-color: var(--accent);
+  animation: avatarGlow 1.6s ease-in-out infinite;
+}
+
+.streaming-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.2s infinite;
+  margin-left: 4px;
+}
+
+/* ── Markdown Styles (light theme) ──────────────────────── */
+.markdown-body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.markdown-body p {
+  margin: 0 0 8px;
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body ul, .markdown-body ol {
+  margin: 4px 0 8px 20px;
+  padding: 0;
+}
+
+.markdown-body li {
+  margin-bottom: 2px;
+}
+
+.markdown-body blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 4px 12px;
+  margin: 8px 0;
+  color: var(--text-secondary);
+  background: rgba(37, 99, 235, 0.06);
+  border-radius: 0 6px 6px 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.markdown-body th {
+  background: var(--bg-secondary);
+  font-weight: 600;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.inline-code {
+  background: rgba(37, 99, 235, 0.1);
+  color: #1d4ed8;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+  font-size: 0.9em;
+}
+
+/* Code blocks */
+.code-block-wrapper {
+  position: relative;
+  margin: 8px 0;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f3f4f6;
+  padding: 4px 12px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+}
+
+.code-block-lang {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.code-copy-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.code-copy-btn:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.code-block-pre {
+  margin: 0;
+  padding: 0;
+}
+
+.code-block-pre code,
+.code-block-wrapper + code {
+  display: block;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--border);
+  border-top: none;
+  font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+  tab-size: 4;
+}
+
+/* highlight.js light theme overrides */
+.hljs {
+  background: #ffffff !important;
+  color: #24292e !important;
+}
+
+.hljs-keyword { color: #d73a49; }
+.hljs-string { color: #032f62; }
+.hljs-number { color: #005cc5; }
+.hljs-comment { color: #6a737d; font-style: italic; }
+.hljs-function { color: #6f42c1; }
+.hljs-built_in { color: #005cc5; }
+.hljs-title { color: #6f42c1; }
+.hljs-attr { color: #005cc5; }
+.hljs-params { color: #24292e; }
+.hljs-type { color: #d73a49; }
+
+/* ── Code Editor Panel ─────────────────────────────────── */
+.code-editor-panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.code-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.code-editor-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.code-challenge-desc {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: rgba(37, 99, 235, 0.06);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+.code-editor-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.code-editor-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.code-editor-body .cm-editor {
+  height: 100%;
+}
+
+.code-editor-body .cm-scroller {
+  font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+  font-size: 14px;
+}
+
+.code-editor-footer {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Fluency Dashboard ─────────────────────────────────── */
+.fluency-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.fluency-card h4 {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.fluency-score {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.fluency-score.good { color: var(--success); }
+.fluency-score.medium { color: var(--warning); }
+.fluency-score.poor { color: var(--error); }
+
+/* ── Prepare Page ──────────────────────────────────────── */
+.prepare-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 32px;
+}
+
+.prepare-page h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.prepare-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Answer-End Pill Button ────────────────────────────────── */
+.answer-end-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 9999px;
+  padding: 7px 28px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.18s ease;
+
+  /* Default: active state (mic recording) */
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.answer-end-pill:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+  transform: translateY(-2px);
+}
+
+.answer-end-pill:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.30);
+}
+
+/* Locked state: answer frozen, waiting for send */
+.answer-end-pill--locked {
+  background: var(--success);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  cursor: pointer;
+}
+
+.answer-end-pill--locked:hover {
+  background: #059669;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+  transform: translateY(-2px);
+}
+
+.answer-end-pill--locked:active {
+  transform: translateY(0);
+}
+
+/* Disabled state: mic not started */
+.answer-end-pill--disabled,
+.answer-end-pill:disabled {
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.answer-end-pill--disabled:hover,
+.answer-end-pill:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+

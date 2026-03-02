@@ -1,0 +1,77 @@
+# =====================================================
+#  Layer 3: 腾讯 · 微信事业群(WXG) · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 腾讯
+company_key: tencent
+bu: 微信事业群
+bu_key: wxg
+position_type: backend
+
+context_intro: >
+  微信后端核心挑战：13亿月活的即时通讯稳定性，微信支付的金融级可靠性，
+  小程序生态的海量服务承载。主技术栈C++/Go，自研框架为主，
+  技术氛围硬核，对底层能力要求高。
+
+tech_stack:
+  primary_languages: [C++, Go, Java]
+  frameworks: [自研RPC框架, Svrkit, mmKV]
+  data_pipeline: [自研MQ, ClickHouse]
+  storage: [MySQL, Redis, 自研KV存储, PaxosStore]
+  infra: [自研容器平台, WNS]
+  ml_platform: [自研推理引擎]
+
+core_domains:
+  - name: 即时通讯
+    architecture: "长连接网关 → 消息路由 → 存储 → 离线推送"
+    keywords: [长连接, 消息可靠性, 已读回执, 群消息, 多端同步]
+    high_frequency_questions:
+      - "微信消息的可靠投递机制"
+      - "亿级长连接的管理方案"
+      - "群消息扩散写vs读扩散的选择"
+
+  - name: 微信支付
+    architecture: "收银台 → 支付网关 → 渠道 → 清结算"
+    keywords: [支付安全, 对账, 分布式事务, 风控]
+    high_frequency_questions:
+      - "支付系统的幂等设计"
+      - "微信红包的高并发架构"
+
+  - name: 小程序平台
+    architecture: "小程序框架 → 云开发 → 服务市场"
+    keywords: [小程序, 云开发, Serverless, 沙箱隔离]
+    high_frequency_questions:
+      - "小程序的沙箱隔离机制"
+      - "云开发的架构设计"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "C++/Go基础、网络编程、数据结构"
+    sample_topics: ["智能指针", "goroutine调度", "TCP粘包"]
+    depth: "知其然，有编码能力"
+  T3_T4:
+    focus: "海量系统设计、存储引擎原理、高可用方案"
+    sample_topics: ["消息系统设计", "分布式存储", "容灾方案"]
+    depth: "知其所以然，有海量经验"
+  T5_T6:
+    focus: "平台级架构、技术战略、社交+支付的技术融合"
+    sample_topics: ["下一代IM架构", "支付基础设施演进"]
+    depth: "有独到见解"
+
+current_pain_points:
+  - "微信生态的开放性与安全性平衡"
+  - "跨平台一致性体验"
+  - "大模型与社交的融合"
+
+team_specific_culture:
+  - "技术硬核，崇尚底层能力"
+  - "小团队精英文化"
+  - "极其重视系统稳定性"
+
+common_interview_topics:
+  - "网络编程"
+  - "C++/Go高性能"
+  - "分布式存储"
+  - "消息系统"
+  - "高并发处理"
+  - "系统设计"

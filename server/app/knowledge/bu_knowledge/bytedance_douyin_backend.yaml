@@ -1,0 +1,82 @@
+# =====================================================
+#  Layer 3: 字节跳动 · 抖音 · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 字节跳动
+company_key: bytedance
+bu: 抖音
+bu_key: douyin
+position_type: backend
+
+context_intro: >
+  抖音后端核心挑战：亿级DAU下推荐系统实时性、直播高并发稳定性、
+  广告投放精准性。主技术栈Go，数据链路Flink+Kafka+ClickHouse。
+  团队规模大，基础设施完善，工作节奏快，KPI压力大。
+
+tech_stack:
+  primary_languages: [Go, Python, Java]
+  frameworks: [gRPC, Kitex, Thrift]
+  data_pipeline: [Flink, Kafka, ClickHouse, RocksDB]
+  storage: [Redis, MySQL, ByteKV, HDFS, S3]
+  infra: [Kubernetes, ByteMesh, ByteCDN]
+  ml_platform: [PyTorch, BytePS, Volcano, TritonServer]
+
+core_domains:
+  - name: 推荐系统
+    architecture: "多路召回 → 粗排(DSSM) → 精排(深度模型) → 重排(多样性/业务规则)"
+    keywords: [召回, 特征工程, A/B实验, 冷启动, 多目标优化, 实时特征]
+    high_frequency_questions:
+      - "百亿级特征的实时更新方案"
+      - "如何处理推荐系统的position bias"
+      - "召回阶段的多路融合策略"
+
+  - name: 直播系统
+    architecture: "RTMP推流 → 转码集群 → CDN分发 → WebRTC拉流"
+    keywords: [RTMP, WebRTC, CDN调度, 弹幕, 连麦, 低延时]
+    high_frequency_questions:
+      - "直播弹幕百万并发架构"
+      - "如何实现亚秒级直播延时"
+
+  - name: 广告系统
+    architecture: "用户定向 → 实时竞价 → CTR预估 → 曝光去重 → 结算"
+    keywords: [CTR预估, 定向投放, RTB, 曝光去重]
+    high_frequency_questions:
+      - "广告系统的实时竞价架构"
+      - "CTR预估模型的在线serving方案"
+
+  - name: 内容安全
+    keywords: [违规识别, 实时审核, 模型推理优化, OCR]
+    high_frequency_questions:
+      - "实时内容审核系统的设计"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "基础技术栈使用，能理解推荐/广告系统基本原理"
+    sample_topics: ["Redis使用和缓存穿透", "MySQL索引", "Kafka基本原理"]
+    depth: "知其然即可"
+  T3_T4:
+    focus: "参与系统设计，有性能优化或架构改进的实际经历"
+    sample_topics: ["服务性能从X提升到Y的完整过程", "推荐系统某模块的设计决策"]
+    depth: "知其所以然，能给出量化数据"
+  T5_T6:
+    focus: "主导技术方向，有对行业前沿（大模型+推荐）的深度见解"
+    sample_topics: ["千亿参数模型的工程化落地", "多模态推荐的架构演进"]
+    depth: "有独到见解，能推演未来方向"
+
+current_pain_points:
+  - "推荐系统多目标优化与用户体验的长期主义平衡"
+  - "大模型推理成本居高不下"
+  - "跨业务线（抖音/TikTok）的技术复用"
+
+team_specific_culture:
+  - "结果导向，日报周报看数据"
+  - "信任工程师，方案设计权力下放"
+  - "内部竞争激烈（多个同类团队）"
+
+common_interview_topics:
+  - "Go高性能编程"
+  - "推荐系统架构"
+  - "分布式系统"
+  - "消息队列"
+  - "缓存策略"
+  - "实时计算"

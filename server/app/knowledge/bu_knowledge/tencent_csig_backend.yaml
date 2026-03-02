@@ -1,0 +1,76 @@
+# =====================================================
+#  Layer 3: 腾讯 · 云与智慧产业事业群(CSIG) · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 腾讯
+company_key: tencent
+bu: 云与智慧产业事业群
+bu_key: csig
+position_type: backend
+
+context_intro: >
+  腾讯云(CSIG)后端核心挑战：云原生产品的竞争力，ToB客户的定制化需求，
+  大模型服务的快速迭代。主技术栈Go/C++，云产品线覆盖IaaS/PaaS/SaaS。
+
+tech_stack:
+  primary_languages: [Go, C++, Java, Python]
+  frameworks: [tRPC, gRPC, Spring Cloud]
+  data_pipeline: [Flink, ClickHouse, TDW]
+  storage: [MySQL, Redis, COS, TDSQL, TiDB]
+  infra: [TKE, SCF, TSF, CLS]
+  ml_platform: [TI平台, 混元大模型]
+
+core_domains:
+  - name: 云原生
+    architecture: "容器平台(TKE) → Serverless(SCF) → 微服务(TSF) → 可观测(CLS)"
+    keywords: [Kubernetes, Serverless, 微服务, 容器安全]
+    high_frequency_questions:
+      - "容器编排和调度的关键设计"
+      - "Serverless冷启动优化"
+      - "多租户资源隔离方案"
+
+  - name: 数据库
+    architecture: "关系型(TDSQL) → 分布式(TiDB) → 向量(向量数据库)"
+    keywords: [分布式数据库, 存算分离, 向量检索]
+    high_frequency_questions:
+      - "分布式数据库的一致性协议"
+      - "存算分离架构的优劣"
+
+  - name: AI基础设施
+    architecture: "模型训练 → 推理服务 → API网关 → 应用层"
+    keywords: [混元大模型, GPU调度, 推理优化]
+    high_frequency_questions:
+      - "大模型推理服务的架构设计"
+      - "GPU集群调度策略"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "Go/C++基础、云基础概念、网络"
+    sample_topics: ["goroutine调度", "容器基础", "HTTP/2"]
+    depth: "有编码能力，了解云"
+  T3_T4:
+    focus: "云产品架构、分布式系统深度、性能优化"
+    sample_topics: ["K8s深度", "数据库内核", "调度算法"]
+    depth: "有云相关实战经验"
+  T5_T6:
+    focus: "云战略、产品竞争力、AI Infra"
+    sample_topics: ["腾讯云差异化", "大模型基础设施"]
+    depth: "有行业洞察"
+
+current_pain_points:
+  - "与阿里云/华为云的市场竞争"
+  - "ToB业务的定制化与标准化平衡"
+  - "大模型服务的成本和性能"
+
+team_specific_culture:
+  - "ToB思维，需要理解客户需求"
+  - "产品迭代快，竞争压力大"
+  - "跨部门协作多"
+
+common_interview_topics:
+  - "云原生架构"
+  - "Go高性能编程"
+  - "分布式系统"
+  - "数据库原理"
+  - "网络编程"
+  - "系统设计"

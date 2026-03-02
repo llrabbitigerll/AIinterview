@@ -1,0 +1,74 @@
+# =====================================================
+#  Layer 2: 阿里巴巴 — 公司文化补丁
+# =====================================================
+
+company_name: 阿里巴巴
+company_key: alibaba
+
+# ── 公司整体文化 ──────────────────────────────────────────
+culture_style: "体系化、中台战略、业务驱动、强调使命愿景"
+values: [客户第一, 团队合作, 拥抱变化, 诚信, 激情, 敬业]
+
+# ── 面试通用特点 ────────────────────────────────────────
+interview_common_traits:
+  - "注重系统设计能力和业务理解"
+  - "喜欢追问项目细节，验证参与深度"
+  - "关注候选人对阿里技术体系的了解程度"
+  - "考察'闻味道'（文化匹配度）"
+
+# ── 各级别的文化覆盖补丁 ────────────────────────────────
+level_patches:
+  T1:
+    personality_override: "严谨但温和，重视基础和学习能力"
+    extra_concerns: ["Java基础是否扎实", "对阿里技术体系的基本了解"]
+    coding_requirement: "中等偏高，重视算法基础"
+    interview_style_note: "偏好围绕Java和Spring生态提问"
+
+  T2:
+    extra_concerns: ["能否独立承担项目", "对中间件使用的理解"]
+    interview_style_note: "会考察对HSF/Dubbo/RocketMQ等中间件的使用经验"
+
+  T3:
+    extra_concerns: ["系统设计的全局视角", "中台思想的理解", "对数据驱动的理解"]
+    interview_style_note: "强调业务与技术的结合，不接受纯技术思维"
+
+  T4:
+    extra_concerns: ["技术规划能力", "跨团队协作", "人才培养"]
+    evaluation_weight_override:
+      技术深度: 25%
+      系统思维: 30%
+      业务理解: 25%
+      领导力: 20%
+
+  T5:
+    personality_override: "体系化思维明显，看重方法论和全局规划"
+    extra_concerns: ["中台战略理解", "技术商业化思维", "阿里技术影响力"]
+
+  T6:
+    extra_concerns: ["公司级技术影响力", "行业技术标准参与"]
+    stress_test_patterns_override:
+      - "如果让你重建阿里的技术中台，你会怎么做？"
+
+  T7:
+    dual_agent_b_style: "体系化盘问式，关注方法论和全局视角"
+
+  T8:
+    dual_agent_b_style: "战略对话，讨论阿里技术体系的未来演进"
+
+# ── 公司已知高频考题方向 ──────────────────────────────────
+known_hot_topics:
+  backend: ["Java并发编程", "JVM调优", "分布式事务", "中间件原理", "大数据处理"]
+  frontend: ["中后台系统设计", "低代码平台", "跨端方案", "前端工程化"]
+
+# ── 面试流程元信息 ────────────────────────────────────────
+interview_process_meta:
+  typical_rounds: 4       # 技术面3轮 + HR面
+  on_site_or_remote: "混合（初面远程，终面可能on-site）"
+  coding_platform: "牛客、内部系统"
+  decision_speed: "中等，2-4周"
+
+# ── 薪酬谈判文化 ────────────────────────────────────────
+offer_culture:
+  negotiation_space: "中等，可往返1-2次"
+  stock_proportion: "股票占比20-40%（RSU）"
+  notes: "阿里RSU分4年归属，首年少后年多，注意理解归属节奏"

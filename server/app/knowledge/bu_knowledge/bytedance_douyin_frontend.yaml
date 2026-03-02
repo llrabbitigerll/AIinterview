@@ -1,0 +1,75 @@
+# =====================================================
+#  Layer 3: 字节跳动 · 抖音 · 前端 — BU技术知识补丁
+# =====================================================
+
+company: 字节跳动
+company_key: bytedance
+bu: 抖音
+bu_key: douyin
+position_type: frontend
+
+context_intro: >
+  抖音前端核心挑战：短视频播放器的极致体验，互动特效的性能优化，
+  直播互动的低延迟。自研跨端框架Lynx，Web性能要求极高。
+
+tech_stack:
+  primary_languages: [TypeScript, JavaScript, C++]
+  frameworks: [React, Lynx, Semi Design]
+  rendering: [WebGL, Canvas, 自研渲染引擎]
+  tools: [Rspack, Webpack, Modern.js]
+  infra: [CDN, 端智能]
+
+core_domains:
+  - name: 播放器技术
+    architecture: "视频解码 → 渲染管线 → 交互层 → 预加载"
+    keywords: [视频编解码, 预加载策略, 帧率优化, HDR]
+    high_frequency_questions:
+      - "短视频秒开方案设计"
+      - "视频预加载策略"
+      - "播放器内存优化"
+
+  - name: 跨端框架
+    architecture: "Lynx框架：JS引擎 → 跨端适配层 → Native渲染"
+    keywords: [Lynx, 跨端, JSBridge, 性能优化]
+    high_frequency_questions:
+      - "Lynx与React Native的架构差异"
+      - "跨端框架的性能优化思路"
+
+  - name: 互动特效
+    architecture: "特效引擎 → GPU渲染 → 手势识别 → 合成输出"
+    keywords: [WebGL, Canvas, 特效渲染, 帧率优化]
+    high_frequency_questions:
+      - "如何保证直播特效60fps"
+      - "Canvas/WebGL性能优化"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "JavaScript基础、React使用、CSS动画"
+    sample_topics: ["事件循环", "React Hooks", "CSS动画性能"]
+    depth: "有开发经验"
+  T3_T4:
+    focus: "渲染原理、跨端框架原理、性能优化深度"
+    sample_topics: ["浏览器渲染管线", "Lynx原理", "列表虚拟化"]
+    depth: "理解底层机制"
+  T5_T6:
+    focus: "前端架构战略、跨端技术方向、AI+前端"
+    sample_topics: ["前端工具链演进", "AI辅助开发"]
+    depth: "有行业视角"
+
+current_pain_points:
+  - "跨端方案与Native体验差距"
+  - "前端构建速度和DX"
+  - "AI生成UI的质量和可维护性"
+
+team_specific_culture:
+  - "追求极致性能体验"
+  - "自研工具链文化"
+  - "数据驱动优化"
+
+common_interview_topics:
+  - "渲染性能优化"
+  - "跨端方案"
+  - "视频播放器"
+  - "JavaScript引擎"
+  - "构建工具"
+  - "动画和特效"

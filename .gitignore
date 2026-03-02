@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+
+# Node
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+desktop.ini
+# ============ OS / IDE ============
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# ============ Node / Client ============
+node_modules/
+dist/
+out/
+.vite/
+*.tsbuildinfo
+client/dist/
+client/out/
+client/node_modules/
+
+# ============ Python / Server ============
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+.eggs/
+dist/
+build/
+*.whl
+.venv/
+venv/
+env/
+server/.venv/
+
+# ============ Environment ============
+.env
+.env.local
+.env.*.local
+
+# ============ Logs ============
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ============ Data ============
+*.sqlite
+*.sqlite3
+*.db
+
+# ============ Research Output (local temp files) ============
+server/research_output/
+research_output/
+
+# local env
+.env

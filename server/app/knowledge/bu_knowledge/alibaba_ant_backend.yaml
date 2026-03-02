@@ -1,0 +1,77 @@
+# =====================================================
+#  Layer 3: 阿里巴巴 · 蚂蚁集团 · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 阿里巴巴
+company_key: alibaba
+bu: 蚂蚁集团
+bu_key: ant
+position_type: backend
+
+context_intro: >
+  蚂蚁集团后端核心挑战：金融级系统稳定性（五个9）、海量交易的实时处理、
+  金融风控和合规。主技术栈Java，自研SOFAStack中间件体系，OceanBase数据库。
+  安全和合规要求极高。
+
+tech_stack:
+  primary_languages: [Java, Go, Python]
+  frameworks: [SOFAStack, SOFARPC, SOFABoot]
+  data_pipeline: [Flink, OceanBase, GeaBase]
+  storage: [OceanBase, Redis, TiKV]
+  infra: [SOFAMesh, Kubernetes, CafeDeployment]
+  ml_platform: [SQLFlow, GeaFlow]
+
+core_domains:
+  - name: 支付系统
+    architecture: "收银台 → 支付路由 → 渠道网关 → 清结算"
+    keywords: [支付, 清结算, 对账, 幂等, 分布式事务]
+    high_frequency_questions:
+      - "支付系统如何保证资金安全"
+      - "分布式事务在支付场景中的应用"
+      - "支付对账系统的设计"
+
+  - name: 风控系统
+    architecture: "实时特征 → 规则引擎 → 模型决策 → 处置"
+    keywords: [风控, 实时计算, 图计算, 反欺诈]
+    high_frequency_questions:
+      - "实时风控系统的延迟要求和架构"
+      - "如何检测欺诈交易"
+
+  - name: 分布式中间件
+    architecture: "SOFAStack全家桶：RPC + MQ + 配置 + 注册中心"
+    keywords: [SOFA, 中间件, 服务治理, 灰度]
+    high_frequency_questions:
+      - "SOFA和Dubbo的区别"
+      - "金融级灰度发布方案"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "Java基础、事务理解、基本安全意识"
+    sample_topics: ["Spring事务管理", "数据库锁", "基本加密"]
+    depth: "知其然，有安全意识"
+  T3_T4:
+    focus: "金融级系统设计、高可用方案、风控原理"
+    sample_topics: ["支付链路设计", "金融级容灾", "分布式事务"]
+    depth: "知其所以然，有金融场景经验优先"
+  T5_T6:
+    focus: "金融科技战略、合规架构、技术出海"
+    sample_topics: ["金融合规架构", "区块链应用", "跨境支付"]
+    depth: "有行业深度理解"
+
+current_pain_points:
+  - "金融合规要求下的技术创新空间"
+  - "全球化支付的多区域一致性"
+  - "大模型在金融风控中的可解释性"
+
+team_specific_culture:
+  - "金融级质量要求，变更审批严格"
+  - "稳定性文化极强"
+  - "安全合规意识贯穿每一行代码"
+
+common_interview_topics:
+  - "分布式事务"
+  - "支付系统设计"
+  - "高可用架构"
+  - "安全和加密"
+  - "数据库优化"
+  - "中间件原理"

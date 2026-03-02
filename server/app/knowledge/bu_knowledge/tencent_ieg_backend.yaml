@@ -1,0 +1,72 @@
+# =====================================================
+#  Layer 3: 腾讯 · 互动娱乐事业群(IEG) · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 腾讯
+company_key: tencent
+bu: 互动娱乐事业群
+bu_key: ieg
+position_type: backend
+
+context_intro: >
+  腾讯IEG后端核心挑战：大型游戏的服务器架构，实时对战的低延迟，
+  全球同服的网络优化。主技术栈C++/Go，对性能要求极高。
+
+tech_stack:
+  primary_languages: [C++, Go, Python, Lua]
+  frameworks: [自研游戏服务器框架, tRPC]
+  data_pipeline: [自研日志系统, Kafka]
+  storage: [MySQL, Redis, 自研KV, TcaplusDB]
+  infra: [自研容器平台, 全球加速网络]
+
+core_domains:
+  - name: 游戏服务器
+    architecture: "网关 → 逻辑服 → 数据服 → 战斗服（帧同步/状态同步）"
+    keywords: [帧同步, 状态同步, AOI, 热更新, 反作弊]
+    high_frequency_questions:
+      - "帧同步和状态同步的区别和适用场景"
+      - "如何设计一个支持万人同服的架构"
+      - "游戏服务器的热更新方案"
+
+  - name: 全球化部署
+    architecture: "多区域部署 → 就近接入 → 跨区域数据同步"
+    keywords: [全球加速, CDN, 跨区同步, 延迟优化]
+    high_frequency_questions:
+      - "全球同服的网络延迟优化"
+      - "跨区域数据一致性方案"
+
+  - name: 社交和匹配
+    architecture: "好友系统 → 匹配服务 → 排行榜"
+    keywords: [匹配算法, ELO, 排行榜, 社交图谱]
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "C++基础、网络编程、数据结构与算法"
+    sample_topics: ["智能指针", "epoll原理", "内存池"]
+    depth: "编码能力是底线"
+  T3_T4:
+    focus: "游戏服务器架构、高性能优化、分布式系统"
+    sample_topics: ["帧同步实现", "服务器性能调优", "内存管理"]
+    depth: "有游戏后端或高性能系统经验"
+  T5_T6:
+    focus: "大型游戏技术架构、全球化部署、引擎技术"
+    sample_topics: ["下一代游戏服务器架构", "云游戏技术"]
+    depth: "有行业视角"
+
+current_pain_points:
+  - "云游戏的延迟和成本"
+  - "AI NPC的落地"
+  - "UGC生态的技术支撑"
+
+team_specific_culture:
+  - "技术硬核，C++功底要求高"
+  - "项目制，跟着产品走"
+  - "加班文化因项目周期而异"
+
+common_interview_topics:
+  - "C++高性能编程"
+  - "网络编程"
+  - "分布式系统"
+  - "游戏架构"
+  - "内存管理"
+  - "并发编程"

@@ -1,0 +1,77 @@
+# =====================================================
+#  Layer 3: 京东 · 物流 · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 京东
+company_key: jd
+bu: 京东物流
+bu_key: logistics
+position_type: backend
+
+context_intro: >
+  京东物流后端核心挑战：全国仓配网络的智能调度，
+  快递和冷链的全链路追踪，最后一公里配送优化。
+  主技术栈Java/Go，IoT和算法比重高。
+
+tech_stack:
+  primary_languages: [Java, Go, Python]
+  frameworks: [Spring Boot, gRPC]
+  data_pipeline: [Flink, Kafka, HBase]
+  storage: [MySQL, Redis, Elasticsearch, MongoDB]
+  infra: [Kubernetes, IoT平台]
+  ml_platform: [运筹优化, 图优化]
+
+core_domains:
+  - name: 仓储管理(WMS)
+    architecture: "入库 → 上架 → 拣选 → 打包 → 发货"
+    keywords: [WMS, 拣选优化, 库位管理, AGV调度]
+    high_frequency_questions:
+      - "WMS核心流程设计"
+      - "智能拣选路径优化"
+      - "AGV集群调度算法"
+
+  - name: 运输管理(TMS)
+    architecture: "路线规划 → 车辆调度 → 在途监控 → 妥投"
+    keywords: [TMS, 路径优化, 车辆调度, 实时追踪]
+    high_frequency_questions:
+      - "最后一公里配送优化方案"
+      - "车辆路径规划算法（VRP）"
+
+  - name: 智能调度
+    architecture: "需求预测 → 库存分配 → 运力调度 → 实时调整"
+    keywords: [预测, 调度, 运筹优化, 实时决策]
+    high_frequency_questions:
+      - "大促期间的运力调度方案"
+      - "需求预测的模型和架构"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "Java基础、SQL、基本系统设计"
+    sample_topics: ["集合框架", "事务隔离", "RESTful API"]
+    depth: "基础扎实"
+  T3_T4:
+    focus: "物流系统设计、调度算法、高并发"
+    sample_topics: ["WMS系统设计", "路径优化", "IoT数据处理"]
+    depth: "有物流或类似领域经验"
+  T5_T6:
+    focus: "供应链技术战略、AI+物流、行业洞察"
+    sample_topics: ["智能仓储方向", "无人配送技术"]
+    depth: "有行业技术视角"
+
+current_pain_points:
+  - "最后一公里成本优化"
+  - "冷链物流的温控实时性"
+  - "无人配送的商业化落地"
+
+team_specific_culture:
+  - "重运营效率，数据说话"
+  - "IoT和算法比重高"
+  - "供应链思维"
+
+common_interview_topics:
+  - "系统设计"
+  - "调度算法"
+  - "分布式系统"
+  - "实时计算"
+  - "数据库优化"
+  - "消息队列"

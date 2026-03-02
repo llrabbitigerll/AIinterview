@@ -1,0 +1,75 @@
+# =====================================================
+#  Layer 2: 字节跳动 — 公司文化补丁
+# =====================================================
+
+company_name: 字节跳动
+company_key: bytedance
+
+# ── 公司整体文化 ──────────────────────────────────────────
+culture_style: "激进、高速迭代、数据驱动、OKR文化"
+values: [始终创业, 追求极致, 坦诚清晰, 多元兼容, 共同成长]
+
+# ── 面试通用特点 ────────────────────────────────────────
+interview_common_traits:
+  - "节奏快，偏好开门见山，不喜欢废话铺垫"
+  - "喜欢追问'为什么这么选，有没有其他方案'"
+  - "会主动观察候选人在追问压力下的反应"
+  - "对项目真实性非常敏感，会验证细节"
+  - "算法题比例高于行业平均"
+
+# ── 各级别的文化覆盖补丁 ────────────────────────────────
+level_patches:
+  T1:
+    personality_override: "直接、节奏快，快速判断基础能力"
+    extra_concerns: ["代码质量习惯", "算法复杂度意识"]
+    coding_requirement: "高，Medium-Hard LeetCode常见"
+    interview_style_note: "算法题比例高于行业平均"
+
+  T2:
+    extra_concerns: ["能否独立推进项目", "敢于挑战现有方案"]
+    interview_style_note: "会给开放题测边界感，如何应对模糊需求"
+
+  T3:
+    extra_concerns: ["系统伸缩性", "研发效能数据", "技术影响力萌芽"]
+    interview_style_note: "要求量化结论，不接受'应该差不多'的回答"
+
+  T4:
+    extra_concerns: ["方向判断力", "能否培养下属", "技术决策的历史"]
+    evaluation_weight_override:
+      技术深度: 25%
+      系统思维: 35%
+      沟通表达: 20%
+      学习潜力: 20%
+
+  T5:
+    personality_override: "高度理性、简洁、快速定位候选人天花板"
+    extra_concerns: ["行业技术视野", "技术战略判断", "曾推动过什么级别的技术变革"]
+
+  T6:
+    extra_concerns: ["对公司整体技术体系的外部影响", "开源贡献或行业布道"]
+    stress_test_patterns_override:
+      - "如果你们的推荐系统要支持全球化，你会怎么做整体规划？"
+
+  T7:
+    dual_agent_b_style: "快节奏盘问式，快速暴露候选人的技术边界"
+
+  T8:
+    dual_agent_b_style: "战略对话模式，讨论而非考察"
+
+# ── 公司已知高频考题方向 ──────────────────────────────────
+known_hot_topics:
+  backend: ["Go GC优化", "Flink背压", "服务发现与注册", "字节码插桩", "eBPF"]
+  frontend: ["Lynx跨端原理", "编译器优化", "渲染性能", "Node.js流量染色"]
+
+# ── 面试流程元信息 ────────────────────────────────────────
+interview_process_meta:
+  typical_rounds: 4       # 技术面3轮 + HR面
+  on_site_or_remote: "远程为主（视频）"
+  coding_platform: "牛客、自研系统"
+  decision_speed: "快，1-2周出结果"
+
+# ── 薪酬谈判文化 ────────────────────────────────────────
+offer_culture:
+  negotiation_space: "较大，可往返2-3次"
+  stock_proportion: "股票占比30-50%"
+  notes: "字节期权/RSU对早期员工稀释较多，谈包时注意问清楚"

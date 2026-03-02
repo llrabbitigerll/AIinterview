@@ -1,0 +1,77 @@
+# =====================================================
+#  Layer 3: 字节跳动 · 飞书 · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 字节跳动
+company_key: bytedance
+bu: 飞书
+bu_key: feishu
+position_type: backend
+
+context_intro: >
+  飞书后端核心挑战：协作文档的实时协同编辑（CRDT/OT），
+  即时通讯的全球化部署，视频会议的音视频质量。
+  主技术栈Go/Rust，数据链路多样，技术深度要求高。
+
+tech_stack:
+  primary_languages: [Go, Rust, Java, Python]
+  frameworks: [gRPC, Kitex]
+  data_pipeline: [Kafka, Flink, ClickHouse]
+  storage: [MySQL, Redis, TiKV, ByteKV]
+  infra: [Kubernetes, 全球化部署]
+  realtime: [WebSocket, CRDT, OT]
+
+core_domains:
+  - name: 协同编辑
+    architecture: "客户端OT/CRDT → 协同服务 → 冲突解决 → 存储"
+    keywords: [CRDT, OT, 协同编辑, 冲突解决, 实时同步]
+    high_frequency_questions:
+      - "CRDT和OT算法的区别和适用场景"
+      - "多人实时协同编辑的架构设计"
+      - "协同编辑中的冲突解决策略"
+
+  - name: 即时通讯
+    architecture: "长连接网关 → 消息路由 → 多端同步 → 离线推送"
+    keywords: [IM, 长连接, 消息可达性, 多端同步]
+    high_frequency_questions:
+      - "IM系统的消息可达性保障"
+      - "全球化IM的延迟优化"
+
+  - name: 音视频会议
+    architecture: "采集 → 编码 → 传输(SFU/MCU) → 解码 → 渲染"
+    keywords: [WebRTC, SFU, 编解码, 回声消除, 带宽自适应]
+    high_frequency_questions:
+      - "视频会议的SFU与MCU架构对比"
+      - "弱网环境下的音视频质量保障"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "Go基础、网络编程、基本数据结构"
+    sample_topics: ["goroutine和channel", "TCP长连接", "消息队列"]
+    depth: "有开发能力"
+  T3_T4:
+    focus: "协同算法、分布式系统、音视频基础"
+    sample_topics: ["CRDT实现", "一致性协议", "WebRTC原理"]
+    depth: "理解核心算法"
+  T5_T6:
+    focus: "协作工具技术战略、全球化架构、AI融合"
+    sample_topics: ["AI在协作工具中的应用", "全球化架构演进"]
+    depth: "有产品+技术融合视角"
+
+current_pain_points:
+  - "与企业微信/钉钉的竞争"
+  - "全球化部署的网络延迟"
+  - "AI助手与协同编辑的深度融合"
+
+team_specific_culture:
+  - "技术深度要求高（CRDT、音视频）"
+  - "产品迭代快"
+  - "全球化思维"
+
+common_interview_topics:
+  - "分布式系统"
+  - "协同算法"
+  - "网络编程"
+  - "Go高性能"
+  - "实时通信"
+  - "音视频基础"

@@ -1,0 +1,68 @@
+# =====================================================
+#  Layer 3: 腾讯 · 微信事业群(WXG) · 前端 — BU技术知识补丁
+# =====================================================
+
+company: 腾讯
+company_key: tencent
+bu: 微信事业群
+bu_key: wxg
+position_type: frontend
+
+context_intro: >
+  微信前端核心挑战：小程序框架底层开发，微信内H5性能优化，
+  跨平台一致性。前端技术栈自研组件为主，对小程序生态有深度理解。
+
+tech_stack:
+  primary_languages: [TypeScript, JavaScript, C++]
+  frameworks: [小程序框架, React, Vue, Kbone]
+  rendering: [WebView, Skyline渲染引擎]
+  tools: [Webpack, 自研构建工具]
+  infra: [CDN, WeTest]
+
+core_domains:
+  - name: 小程序框架
+    architecture: "逻辑层(JSCore) → 渲染层(WebView/Skyline) → Native桥接"
+    keywords: [双线程模型, 自定义组件, 性能优化, Skyline]
+    high_frequency_questions:
+      - "小程序双线程架构的设计原理"
+      - "如何优化小程序的渲染性能"
+      - "Skyline渲染引擎和WebView的差异"
+
+  - name: 微信Web应用
+    architecture: "H5 → 性能优化 → 离线化 → 预加载"
+    keywords: [首屏优化, 离线包, Service Worker, 骨架屏]
+    high_frequency_questions:
+      - "微信内H5的首屏加载优化方案"
+      - "离线包方案的设计和更新策略"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "JavaScript基础、小程序开发、CSS布局"
+    sample_topics: ["事件循环", "小程序生命周期", "Flex布局"]
+    depth: "有实际开发经验"
+  T3_T4:
+    focus: "小程序框架原理、渲染性能优化、跨端方案"
+    sample_topics: ["双线程通信机制", "渲染引擎优化", "组件系统设计"]
+    depth: "理解底层原理"
+  T5_T6:
+    focus: "平台级前端架构、渲染引擎设计、Web标准发展"
+    sample_topics: ["下一代小程序架构", "渲染引擎演进方向"]
+    depth: "有平台视角"
+
+current_pain_points:
+  - "小程序性能与Native体验差距"
+  - "跨平台开发效率"
+  - "Web新标准的快速适配"
+
+team_specific_culture:
+  - "前端要懂底层渲染原理"
+  - "小团队高效作战"
+  - "代码质量要求极高"
+
+common_interview_topics:
+  - "小程序框架原理"
+  - "渲染性能优化"
+  - "跨端方案"
+  - "JavaScript引擎"
+  - "CSS高级布局"
+  - "Web标准"

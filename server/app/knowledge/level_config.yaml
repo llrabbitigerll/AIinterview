@@ -1,0 +1,164 @@
+# =====================================================
+#  Level Configuration — T1~T8 级别体系 + 轮次路由规则
+#  T1~T6: 候选人可选目标级别
+#  T7/T8: 仅作为面试官角色（候选人不可选）
+# =====================================================
+
+# ── 级别定义 ─────────────────────────────────────────────
+levels:
+  T1:
+    label: "初级工程师"
+    salary_range: "20-50w"
+    candidate_selectable: true
+    years_experience: "0-3年"
+    description: "校招/初入职场，掌握基本编程和框架使用"
+
+  T2:
+    label: "中级工程师"
+    salary_range: "30-60w"
+    candidate_selectable: true
+    years_experience: "2-5年"
+    description: "独立承担模块开发，有一定技术广度"
+
+  T3:
+    label: "高级工程师"
+    salary_range: "50-80w"
+    candidate_selectable: true
+    years_experience: "4-8年"
+    description: "主导系统设计，有技术深度和影响力萌芽"
+
+  T4:
+    label: "资深工程师"
+    salary_range: "60-120w"
+    candidate_selectable: true
+    years_experience: "6-12年"
+    description: "独立负责大型系统，有技术决策和团队影响力"
+
+  T5:
+    label: "技术专家"
+    salary_range: "100-180w"
+    candidate_selectable: true
+    years_experience: "8-15年"
+    description: "技术方向带头人，跨团队影响力，推动技术变革"
+
+  T6:
+    label: "高级技术专家"
+    salary_range: "120-240w"
+    candidate_selectable: true
+    years_experience: "10-20年"
+    description: "公司级技术影响力，行业影响力，定义技术方向"
+
+  T7:
+    label: "技术总监（仅面试官）"
+    salary_range: "N/A"
+    candidate_selectable: false
+    years_experience: "15年+"
+    description: "跨公司技术影响力，作为高级别面试官考察T5/T6候选人"
+
+  T8:
+    label: "Fellow/VP（仅面试官）"
+    salary_range: "N/A"
+    candidate_selectable: false
+    years_experience: "20年+"
+    description: "行业顶级专家，战略对话式面试"
+
+
+# ── 公司级别映射表 ───────────────────────────────────────
+# 就低原则：横跨两个T级别的公司级别，取低值
+company_level_mapping:
+  alibaba:
+    P5: T1
+    P6: T2
+    P7: T3      # P7横跨T3/T4，取低→T3
+    P8: T5
+    P9: T6
+    P10: T7
+    P11: T8
+    Fellow: T8
+
+  tencent:
+    "5级": T1
+    "6级": T1
+    "7级": T1
+    "8级": T2
+    "9级": T3
+    "10级": T4
+    "11级": T5
+    "12级": T6
+    "13级": T7
+    "14级": T8
+
+  bytedance:
+    "1-1": T1
+    "1-2": T1
+    "2-1": T2
+    "2-2": T3
+    "3-1": T4
+    "3-2": T5
+    "4-1": T6
+    "4-2": T7
+    "5-1": T8
+
+  jd:
+    P3: T1
+    P4: T1
+    P5: T1
+    P6: T2
+    P7: T3
+    P8: T4      # P8横跨T4/T5，取低→T4
+    P9: T5      # P9横跨T5/T6，取低→T5
+    P10: T6
+
+  meituan:
+    L5: T1
+    L6: T1      # L6/L7合并进T1，无独立T2
+    L7: T1
+    L8: T3      # L8横跨T3，取低→T3
+    L9: T5
+    L10: T6
+
+
+# ── 面试轮次路由规则 ─────────────────────────────────────
+# 每个候选人目标级别对应3轮面试
+# interviewer_level: 该轮面试官的级别
+# mode: single = 单Agent(仅agent_b), double = 双Agent(agent_b + agent_c)
+round_rules:
+  T1:
+    - {round: 1, interviewer_level: T1, mode: single}
+    - {round: 2, interviewer_level: T2, mode: single}
+    - {round: 3, interviewer_level: T3, mode: single}
+
+  T2:
+    - {round: 1, interviewer_level: T2, mode: single}
+    - {round: 2, interviewer_level: T3, mode: single}
+    - {round: 3, interviewer_level: T4, mode: single}
+
+  T3:
+    - {round: 1, interviewer_level: T3, mode: single}
+    - {round: 2, interviewer_level: T4, mode: single}
+    - {round: 3, interviewer_level: T5, mode: single}
+
+  T4:
+    - {round: 1, interviewer_level: T4, mode: single}
+    - {round: 2, interviewer_level: T5, mode: single}
+    - {round: 3, interviewer_level: T5, mode: single}
+
+  T5:
+    - {round: 1, interviewer_level: T5, mode: single}
+    - {round: 2, interviewer_level: T6, mode: single}
+    - {round: 3, interviewer_level: T7, mode: double}
+
+  T6:
+    - {round: 1, interviewer_level: T6, mode: single}
+    - {round: 2, interviewer_level: T7, mode: double}
+    - {round: 3, interviewer_level: T8, mode: double}
+
+
+# ── 双Agent分工说明 ──────────────────────────────────────
+dual_agent_roles:
+  agent_b:
+    name: "技术面试官"
+    focus: "技术深度、系统设计、架构能力、编码能力"
+  agent_c:
+    name: "业务/战略面试官"
+    focus: "业务理解、技术判断力、团队影响力、战略视野"

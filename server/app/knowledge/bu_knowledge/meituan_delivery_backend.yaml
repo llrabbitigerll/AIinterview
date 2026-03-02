@@ -1,0 +1,78 @@
+# =====================================================
+#  Layer 3: 美团 · 配送 · 后端 — BU技术知识补丁
+# =====================================================
+
+company: 美团
+company_key: meituan
+bu: 配送事业部
+bu_key: delivery
+position_type: backend
+
+context_intro: >
+  美团配送后端核心挑战：日均千万级订单的实时调度，
+  数百万骑手的智能派单，复杂场景下的ETA预估。
+  主技术栈Java/Go，算法+系统并重，LBS技术深度高。
+
+tech_stack:
+  primary_languages: [Java, Go, Python]
+  frameworks: [Spring Boot, gRPC, Thrift]
+  data_pipeline: [Flink, Kafka, ClickHouse]
+  storage: [MySQL, Redis, Elasticsearch, MongoDB]
+  infra: [Kubernetes, OCTO(服务治理)]
+  geo: [GIS引擎, 路径规划引擎]
+
+core_domains:
+  - name: 智能调度
+    architecture: "订单池 → 骑手匹配 → 路径规划 → 实时调整"
+    keywords: [派单算法, 路径规划, ETA预估, 运力调度, 实时优化]
+    high_frequency_questions:
+      - "外卖订单的实时派单算法思路"
+      - "ETA预估的模型和工程架构"
+      - "如何平衡配送效率和骑手体验"
+
+  - name: LBS服务
+    architecture: "POI数据 → 地图引擎 → 路径规划 → 地理围栏"
+    keywords: [GeoHash, R树, 路径规划, POI, 地理围栏]
+    high_frequency_questions:
+      - "高效的地理位置搜索方案"
+      - "路径规划引擎的设计"
+      - "地理围栏的实现和优化"
+
+  - name: 订单系统
+    architecture: "下单 → 支付 → 商家接单 → 骑手取餐 → 配送 → 妥投"
+    keywords: [订单状态机, 分布式事务, 大促保障]
+    high_frequency_questions:
+      - "外卖订单状态机设计"
+      - "高峰期订单处理的限流方案"
+
+interview_depth_by_target_level:
+  T1_T2:
+    focus: "Java基础、数据结构、基本系统设计"
+    sample_topics: ["HashMap/ConcurrentHashMap", "MySQL索引", "Redis使用"]
+    depth: "基础扎实，有编码能力"
+  T3_T4:
+    focus: "系统设计实战、LBS技术、调度算法基础"
+    sample_topics: ["配送系统设计", "地理位置服务", "实时计算"]
+    depth: "有大规模系统经验"
+  T5_T6:
+    focus: "配送技术战略、AI+物流、无人配送"
+    sample_topics: ["调度算法的终极形态", "无人配送技术路线"]
+    depth: "有行业深度和战略高度"
+
+current_pain_points:
+  - "高峰时段运力不足的智能应对"
+  - "复杂天气/交通下的ETA准确度"
+  - "无人配送的规模化落地"
+
+team_specific_culture:
+  - "算法+工程并重"
+  - "数据驱动，AB测试文化成熟"
+  - "KPI导向，配送时效是核心指标"
+
+common_interview_topics:
+  - "系统设计"
+  - "LBS服务"
+  - "调度算法"
+  - "实时计算"
+  - "Java高并发"
+  - "分布式系统"

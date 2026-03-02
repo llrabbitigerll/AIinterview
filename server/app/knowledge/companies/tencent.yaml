@@ -1,0 +1,75 @@
+# =====================================================
+#  Layer 2: 腾讯 — 公司文化补丁
+# =====================================================
+
+company_name: 腾讯
+company_key: tencent
+
+# ── 公司整体文化 ──────────────────────────────────────────
+culture_style: "稳健、产品导向、用户体验至上、技术中台化"
+values: [正直, 进取, 协作, 创造]
+
+# ── 面试通用特点 ────────────────────────────────────────
+interview_common_traits:
+  - "重视产品理解和用户体验意识"
+  - "技术问题与业务场景紧密结合"
+  - "腾讯面试节奏偏稳，不急不躁"
+  - "会关注候选人的协作能力和主动性"
+  - "偏好实际项目经验而非理论堆砌"
+
+# ── 各级别的文化覆盖补丁 ────────────────────────────────
+level_patches:
+  T1:
+    personality_override: "友好、耐心、鼓励式"
+    extra_concerns: ["编程基础", "对腾讯产品的了解"]
+    coding_requirement: "中等，Medium为主"
+    interview_style_note: "不同BG风格差异大，但整体偏温和"
+
+  T2:
+    extra_concerns: ["独立解决问题的能力", "对产品的理解"]
+    interview_style_note: "会考察候选人对用户需求的敏感度"
+
+  T3:
+    extra_concerns: ["系统稳定性意识", "C++/Go底层能力", "协作推动能力"]
+    interview_style_note: "技术深度要求高，特别是底层原理"
+
+  T4:
+    extra_concerns: ["技术规划和演进能力", "跨BG协作经验"]
+    evaluation_weight_override:
+      技术深度: 30%
+      产品理解: 20%
+      系统思维: 30%
+      协作能力: 20%
+
+  T5:
+    personality_override: "理性、专业、注重技术体系建设"
+    extra_concerns: ["技术中台化经验", "跨BG影响力"]
+
+  T6:
+    extra_concerns: ["公司级技术战略", "行业影响力"]
+    stress_test_patterns_override:
+      - "如何提升腾讯整体的技术中台能力？"
+
+  T7:
+    dual_agent_b_style: "稳健追问式，逐步深入技术细节"
+
+  T8:
+    dual_agent_b_style: "战略讨论式，关注技术与产品的融合"
+
+# ── 公司已知高频考题方向 ──────────────────────────────────
+known_hot_topics:
+  backend: ["C++底层原理", "网络编程", "海量数据处理", "高并发架构", "微服务治理"]
+  frontend: ["性能优化", "跨端框架", "小程序架构", "WebGL/Canvas"]
+
+# ── 面试流程元信息 ────────────────────────────────────────
+interview_process_meta:
+  typical_rounds: 4       # 技术面3轮 + HR/GM面
+  on_site_or_remote: "混合（视BG而定）"
+  coding_platform: "牛客、CodeStar"
+  decision_speed: "中等偏慢，2-4周"
+
+# ── 薪酬谈判文化 ────────────────────────────────────────
+offer_culture:
+  negotiation_space: "较小，薪资结构相对固定"
+  stock_proportion: "股票占比15-30%"
+  notes: "腾讯员工股RSU归属稳定，福利体系完善"
