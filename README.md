@@ -7,53 +7,75 @@
 - `client/`：前端（Vite + React）。
 - `scripts/`：辅助脚本，例如 `scripts/remove_secrets.ps1`。
 
-**快速开始（Windows — 从零到运行）**
+**快速开始（Windows — 从零到运行，使用 start.ps1）**
 
 先决条件：
-- Git（参见下文）
+- Git
 - Python 3.10+（建议 3.10/3.11）
 - Node.js 16+（含 npm）
 
-1. 克隆仓库
+概览：仓库根提供 `start.ps1` 启动脚本，会在新窗口启动后端（uvicorn, http://localhost:8000）和 Electron 客户端。下面的步骤保证一台“全新” Windows 机器在安装必要依赖后能够直接运行 `start.ps1`。
+
+步骤（在 PowerShell 中执行）：
+
+1. 克隆仓库并进入目录
 
 ```powershell
-git clone <your-repo-url>
-cd <repo-folder>
+# 使用 SSH（需要配置 SSH key）
+git clone git@github.com:llrabbitigerll/AIinterview.git
+cd AIinterview
+
+# 或使用 HTTPS（不需要 SSH 配置）
+git clone https://github.com/llrabbitigerll/AIinterview.git
+cd AIinterview
 ```
 
-2. 后端（`server/`）
+2. 后端：创建虚拟环境并安装依赖
 
 ```powershell
-cd server
+cd .\server
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-# 如果项目提供 requirements.txt
+# 若项目提供 requirements.txt：
 pip install -r requirements.txt
-# 或基于 pyproject.toml 安装
+# 或基于 pyproject.toml 安装可编辑包：
 pip install -e .
 
-# 复制示例 env 并填写密钥
+# 复制示例 env 并填入你的 API keys（不要提交 .env 到远端）
 copy .env.example .env
-# 编辑 .env，填入 OPENAI/QWEN/ASR 等 API KEY
+notepad .env   # 编辑并保存
 ```
 
-启动后端（示例 — 根据项目实际入口调整）
+3. 前端：安装依赖（回到仓库根或执行下面）
 
 ```powershell
-python -m app.main
-# 或 uvicorn app.main:app --reload
-```
-
-3. 前端（`client/`）
-
-```powershell
-cd ../client
+cd ..\client
 npm install
-npm run dev
+# TypeScript 主进程编译会在 start.ps1 中执行，但可以手动编译检查：
+npx tsc -p tsconfig.main.json
 ```
 
-页面通常开放在 `http://localhost:5173`（Vite 默认）。
+4. 回到仓库根并运行启动脚本
+
+```powershell
+cd ..\
+# 在 PowerShell（不是 CMD）运行：
+.\start.ps1
+```
+
+说明：
+- `start.ps1` 会（1）检查 `server/.venv`，（2）在新窗口启动后端（端口 8000），（3）等待后端健康检查 `/health`，（4）编译 Electron 主进程并在新窗口启动客户端（`npm run dev`）。
+- 若 `start.ps1` 提示找不到虚拟环境，请先在 `server` 目录按上述步骤创建 `.venv` 并安装依赖。
+- 若未使用 SSH 克隆，可改用 HTTPS 克隆地址。
+
+5. 停止服务
+
+关闭 `start.ps1` 打开的两个 PowerShell 窗口即可停止后端与客户端。
+
+（可选）如果你希望先手动启动后端或前端：
+- 手动启动后端：在 `server` 虚拟环境激活后运行 `python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload`
+- 手动启动前端（Electron dev）：在 `client` 目录运行 `npm run dev`
 
 4. 移除或检查敏感信息
 
@@ -62,36 +84,6 @@ npm run dev
 ```powershell
 .\scripts\remove_secrets.ps1
 ```
-
-5. Git 与推送（SSH 推荐）
-
-生成 SSH key 并添加到 GitHub：
-
-```powershell
-# 生成（示例）
-ssh-keygen -t ed25519 -C "you@example.com"
-Start-Service ssh-agent
-ssh-add $env:USERPROFILE\.ssh\id_ed25519
-Get-Content $env:USERPROFILE\.ssh\id_ed25519.pub
-```
-
-常用推送命令：
-
-```powershell
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin git@github.com:yourname/your-repo.git
-git branch -M main
-git push -u origin main
-```
-
-或使用 `gh` 创建并推送：
-
-```powershell
-gh repo create your-repo --public --source=. --remote=origin --push
-```
-
 **`.env` 说明**
 项目已包含 `server/.env.example`，请复制为 `server/.env` 并填写 API keys（不要将 `.env` 提交到 git）。
 
