@@ -1,6 +1,23 @@
 # AI Interview Server — 仓库说明
 
-简要：这是一个用于 AI 模拟面试与简历评估的项目，包含 Python 后端（在 `server/`）与前端客户端（在 `client/`）。
+**产品简介**
+本应用是一款面向互联网技术岗求职者的 AI 面试训练平台，旨在帮助应届毕业生、同行业跳槽者以及有意转行到互联网的候选人在真实面试前进行模拟练习、获得客观评估并针对性提升面试表现。当前版本聚焦互联网技术岗位场景，后续将逐步扩展更多岗位类型。
+
+**核心功能与特色（面向用户）**
+- 简历解析：在面试开始时上传简历，HR Agent 会自动解析项目经历、职责与技术点，为后续问答与评估提供结构化输入。
+- 个性化预调研：根据候选人简历与目标公司，自动采集业务线产品/技术更新与招聘信号，生成结构化面试情报与短报告，并注入 AI 面试官提示以提升针对性。
+- 实时 AI 面试：AI 面试官基于简历与预调研结果生成贴合互联网企业风格的问题，并通过 TTS 输出语音；候选人通过麦克风回答时由 ASR 实时转写，系统对流畅度与回答质量进行实时监控并动态调整后续问题，模拟真实面试互动节奏。
+- 面试复盘报告：会话结束后生成详尽复盘，包括答题质量、技术深度与语言表现的量化评分，指出薄弱项并给出可执行的改善建议。
+
+**目录结构（重要）**
+- `server/`：Python 后端，包含 `pyproject.toml` 与 `server/.env.example`。
+- `client/`：前端（Vite + React）。
+- `scripts/`：辅助脚本，例如 `scripts/remove_secrets.ps1`。
+
+```markdown
+# AI Interview Server — 仓库说明
+
+一句话概览：基于实时语音流、可插拔 ASR/LLM 与多 agent 协作的 AI 面试与简历评估平台（桌面客户端 + 后端 + 开发者 DevTools）。
 
 **目录结构（重要）**
 - `server/`：Python 后端，包含 `pyproject.toml` 与 `server/.env.example`。
@@ -84,8 +101,73 @@ cd ..\
 ```powershell
 .\scripts\remove_secrets.ps1
 ```
+
+**关键特性（技术视角）**
+- 多 agent 架构（Orchestrator + Interview/Research/Resume），将会话流与任务拆分并并行处理（参考 `server/app/agents/`）。
+- 可插拔的 ASR/LLM 提供者（Azure、iFlytek，以及多种 LLM 提供商），便于替换或做 A/B 测试（参考 `server/app/providers/` 与 `server/app/services/llm_service.py`）。
+- 内置 DevTools（独立服务 + VSCode webview），支持事件归档、回放与实时监控（参考 `devtools/`）。
+
+**架构概览（Mermaid 源码，可直接渲染）**
+```mermaid
+flowchart LR
+	Client[Electron 客户端\n(PCM capture)]
+	Client -->|WebSocket (PCM/事件)| Backend[FastAPI 后端]
+	Backend --> SessionMgr[SessionManager]
+	SessionMgr --> Orchestrator[Orchestrator Agent]
+	Orchestrator --> InterviewAgent[Interview/Resume/Research Agents]
+	Orchestrator -->|调用| LLM[LLM Service]
+	Orchestrator -->|调用| ASR[ASR Provider]
+	Orchestrator -->|调用| TTS[TTS Service]
+	Backend -->|事件/归档| DevTools[DevTools / VSCode webview]
+```
+
+**快速演示（Windows）**
+- 一键演示（使用仓库根脚本）：
+```powershell
+.\start.ps1
+```
+- 或单独启动后端/前端（示例）：
+```bash
+# 后端 (示例)
+python -m server.app.main
+
+# 客户端 (示例)
+cd client
+npm install
+npm run dev
+```
+
+**示例会话（面向产品/非技术用户）**
+- 用户说一句话 → 客户端捕获音频并实时发送 → 后端 ASR 把语音转成文字片段 → Interview Agent 根据上下文用 LLM 生成下一句提问或评估反馈 → 系统返回文本/语音给用户。
+- 示例（简化）：
+	- 用户（口语）："请问你最近做过的项目是什么？"
+	- 系统（转写）："你最近做过的项目是什么？"
+	- Agent（提问）："能否描述你在该项目中的具体责任与一项关键技术挑战？"
+	- 评估（会话结束后）："该候选人在沟通上得分 8/10；技术细节说明不足。"
+
 **`.env` 说明**
 项目已包含 `server/.env.example`，请复制为 `server/.env` 并填写 API keys（不要将 `.env` 提交到 git）。
+
+**配置说明（摘要）**
+- 必要环境变量：`OPENAI_API_KEY`（或其他 LLM provider key）及所选 ASR 提供商的 key。
+- 支持的提供者与切换参考：见 `server/LLM_PROVIDERS.md` 与 `server/app/providers`。
+
+**开发与调试**
+- 后端入口： `server/app/main.py`
+- 客户端入口： `client/src/main/index.ts`
+- 运行测试示例： `server/app/test_llm_providers.py`
+- DevTools：运行 `devtools/server/devtools_app.py` 并在 VSCode 扩展中打开 webview
+
+**隐私与安全**
+- 语音与简历数据可能含敏感信息；在生产部署时请务必：
+	- 使用安全的密钥管理（不要将密钥写入仓库）
+	- 开启网络与存储加密
+	- 定期清理或归档敏感记录（参见 `scripts/remove_secrets.ps1`）
+
+**示例场景与价值主张（面向产品经理）**
+- 快速搭建面试演示：用真实语音交互模拟结构化面试，提高候选人体验与评估一致性。
+- 企业端可扩展的评估管线：可替换 LLM/ASR，便于做 A/B 测试或切换供应商。
+- 开发者友好：内置 DevTools 与 VSCode webview，支持事件回放与调试。
 
 **常见问题**
 - 模块缺失：确认激活了虚拟环境并在 `server/` 安装依赖。
@@ -99,3 +181,4 @@ cd ..\
 如果你希望我：
 - 将这些文件提交到 git（需在你的机器上安装并配置 Git）；
 - 或生成一个示例 GitHub Actions CI 配置（例如安装依赖并运行静态检查），请告诉我。
+```
